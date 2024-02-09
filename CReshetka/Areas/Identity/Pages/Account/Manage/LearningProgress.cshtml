@@ -1,0 +1,23 @@
+﻿@page
+@model LearningProgressModel
+@{
+    ViewData["Title"] = "Learning progress";
+    ViewData["ActivePage"] = ManageNavPages.LearningProgress;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<h3>@ViewData["Title"]</h3>
+<div class="row">
+    <div class="col-md-6">
+        <form id="learning-progress-form" method="post">
+            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="LearningProgress" class="form-control" placeholder="Please enter your email." disabled />
+                <label asp-for="LearningProgress" class="form-label"></label>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

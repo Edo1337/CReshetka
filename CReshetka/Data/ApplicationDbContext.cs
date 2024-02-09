@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace CReshetka.Data
 {
@@ -8,6 +9,12 @@ namespace CReshetka.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<ApplicationUser>().Property(s => s.Studied).HasDefaultValue(0);
+        //}
     }
-}
+    }
