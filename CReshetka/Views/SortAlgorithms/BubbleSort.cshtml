@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Сортировка пузырьком (Bubble Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Один из наиболее известных и часто спрашиваемых на собеседованиях алгоритмов сортировки. Работает за квадратичное время <span>O(n*n)</span>.
+    </p>
+    <p>
+        Принцип работы достаточно прост: последовательно сравниваются два рядом стоящих элемента, и если левый больше правого, то они меняются местами, после чего сравниваются следующие элементы. И так повторяется до тех пор, пока все элементы не будут упорядочены.
+    </p>
+
+    <p>
+        <h3><span>Пример сортировки пузырьком на C#:</span></h3>
+    </p>
+    @* упростить код не забудь!*@
+<pre>
+<code> 
+using System;
+
+class BubbleSort
+{
+    static void Main()
+    {
+        int[] array = { 64, 34, 25, 12, 22, 11, 90 };
+
+        Console.WriteLine("Исходный массив:");
+        PrintArray(array);
+
+        BubbleSortAlgorithm(array);
+
+        Console.WriteLine("\nОтсортированный массив:");
+        PrintArray(array);
+    }
+
+    static void BubbleSortAlgorithm(int[] arr)
+    {
+        int n = arr.Length;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    // Обмен элементов, если они находятся в неправильном порядке
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    static void PrintArray(int[] arr)
+    {
+        foreach (var item in arr)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+}    </code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/Cq7SMsQBEUw" title="Bubble Sort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/PD1Nn4fHcts?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Сортировка пузырьком (bubble sort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
