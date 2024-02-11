@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\Test.cshtml" />
+    <Content Remove="Views\Test\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +24,13 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Uploads\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
-    <None Include="Views\Home\Test.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Test\Index.cshtml" />
   </ItemGroup>
 
 </Project>
