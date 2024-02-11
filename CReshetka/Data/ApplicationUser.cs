@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CReshetka.Models;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,5 +15,7 @@ namespace CReshetka.Data
         public string? ProfilePhoto { get; set; }
 
         public int Studied { get; set; } //количество просмотренных задач
+
+        public ICollection<TestResult> TestResults { get; set; }
     }
 }
