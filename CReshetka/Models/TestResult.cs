@@ -19,8 +19,6 @@ namespace CReshetka.Models
         public string? UserId { get; set; }
         [Required]
         public string NameTest { get; set; }
-        [Required]
-        public bool IsCompleted { get; set; }
 
         // Навигационное свойство для связи с AspNetUsers
         [NotMapped]

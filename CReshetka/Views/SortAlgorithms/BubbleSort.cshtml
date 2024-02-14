@@ -81,7 +81,7 @@ class BubbleSort
     <p>
         <h3><span>Тест</span></h3>
     </p>
-    <div>
+    <form method="post" action="/SortAlgorithms/BubbleSort">
         <fieldset class="form-group">
             <div class="question">
                 <legend class="mt-4">Какое квадратичное время у сортировки пузырьком?</legend>
@@ -162,27 +162,20 @@ class BubbleSort
                     </label>
                 </div>
             </div>
-
-            @*     @if (аккауном пройден тест ранее(проверяем запись в бд))
-            {
-
-            }
-            else
-            {
-
-            } *@
-
+            <input type="hidden" id="resultTest" name="resultTest" value="false">
             <button type="submit" class="btn btn-primary" onclick="calculateResults()">Проверить результат</button>
             <div id="results"></div>
         </fieldset>
-    </div>
+    </form>
 </div>
+
 
 <script>
     function calculateResults() {
         // Инициализация счетчиков
         var totalQuestions = 0;
         var correctAnswers = 0;
+        var resultTest;
         // Получение всех элементов с классом "question"
         var questions = document.getElementsByClassName("question");
         // Перебор всех вопросов
@@ -201,6 +194,16 @@ class BubbleSort
                 }
             }
         }
+
+        if (totalQuestions === correctAnswers) {
+            resultTest = true;
+        } else {
+            resultTest = false;
+        }
+
+        // Установка значения resultTest в скрытое поле формы
+        document.getElementById("resultTest").value = resultTest;
+
         // Вывод результатов
         var resultsMessage = "Вы ответили правильно на " + correctAnswers + " из " + totalQuestions + " вопросов.";
         document.getElementById("results").innerHTML = resultsMessage;
