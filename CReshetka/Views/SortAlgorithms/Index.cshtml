@@ -3,45 +3,15 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<div class="conteiner">
+<div class="container">
     <p>
-        <span>Алгоритмы</span> — это изюминка программирования! Они представляют собой процессы или наборы инструкций, которые решают определенную задачу.
+        <span>Алгоритмы представляют собой процессы или наборы инструкций, которые решают определенную задачу.</span>
         В этом разделе мы рассмотрим различные алгоритмы с использованием языка программирования C#. Будем исследовать их основные принципы, реализацию и применение.
-    <p>
-    <p>
-        <h3><span>Big O</span></h3>
-        <span>Big O</span> - это термин, используемый для оценки верхней границы (наихудшего случая), временной сложности алгоритма.
-        Простыми словами Big O показывает как будет меняться производительность алгоритма с зависимости от роста входящих данных.
-        Если мы будем увеличивать количество входящих данных, то у нас может расти количество операций и время за которое выполнится алгоритм. Так же может расти количество памяти используемой данным алгоритмом для обработки входного объема данных. Big O будет показывать скорость роста времени исполнения алгоритма.
     </p>
+
     <p>
-        <h3><span>Примеры сложностей Big O:</span></h3>
-    <p>
-        <span>O(1)</span>: Константная сложность. Время выполнения алгоритма не зависит от размера входных данных. Например, доступ к элементу массива по индексу.
+        <h3><span>Определение</span></h3>
     </p>
-    <p>
-        <span>O(log n)</span>: Логарифмическая сложность. Время выполнения алгоритма растет медленно с увеличением размера входных данных. Например, бинарный поиск в отсортированном массиве.
-        Простейший пример — бинарный поиск. Если массив отсортирован, мы можем проверить, есть ли в нём какое-то конкретное значение, методом деления пополам.
-        Проверим средний элемент, если он больше искомого, то отбросим вторую половину массива — там его точно нет. Если же меньше, то наоборот — отбросим начальную половину.
-        И так будем продолжать делить пополам, в итоге проверим log n элементов.
-    </p>
-    <p>
-        <span>O(n)</span>: Линейная сложность. Время выполнения алгоритма пропорционально размеру входных данных. Например, просмотр всех элементов в массиве,
-        или же алгоритм поиска наибольшего элемента в не отсортированном массиве. Нам придётся пройтись по всем n элементам массива, чтобы понять, какой из них максимальный.
-    </p>
-    <p>
-        <span>O(n log n)</span>: Линейно-логарифмическая сложность. Время выполнения алгоритма растет быстрее, чем линейно, но медленнее, чем квадратично. Например, сортировка слиянием (merge sort).
-    </p>
-    <p>
-        <span>O(n^2)</span>: Квадратичная сложность. Время выполнения алгоритма зависит от квадрата размера входных данных. Например, сортировка пузырьком (bubble sort).
-    </p>
-    <p>
-        <span>O(n^3)</span>: Кубическая сложность. Время выполнения алгоритма зависит от размера входных данных в кубе. Например, алгоритмы, которые имеют три вложенных цикла, такие как некоторые методы многомерной обработки данных.
-    </p>
-    <p>
-        <span>O(n!)</span>: Факториальная сложность. Это самая высокая степень роста времени выполнения алгоритма. Время выполнения алгоритма растет факториально от размера входных данных. Этот тип сложности встречается, например, при переборе всех возможных комбинаций элементов, что делает его чрезвычайно неэффективным для больших значений n.
-    </p>
-    <h3><span>Определение</span></h3>
     <p>
         <span>Алгоритмы сортировки — это набор инструкций, которые принимают массив или список в качестве входных данных и упорядочивают элементы в определенном порядке.</span>
         Сортировка чаще всего осуществляется в числовом или алфавитном (или лексикографическом) порядке и может осуществляться по возрастанию (AZ, 0–9) или по убыванию (ZA, 9–0).
@@ -51,10 +21,645 @@
         Поскольку алгоритмы сортировки часто могут снизить сложность проблемы, они очень важны в информатике. Эти алгоритмы имеют прямое применение в алгоритмах поиска, алгоритмах баз данных, методах «разделяй и властвуй», алгоритмах структур данных и многом другом.
         Вы готовы к погружению в алгоритмические просторы? Тогда давайте начнем!
     </p>
-    <h3><span>Компромиссы алгоритмов сортировки</span></h3>
-    <P>
-        При выборе алгоритма сортировки необходимо задать несколько вопросов: насколько велика сортируемая коллекция? Сколько памяти доступно? Нужно ли расширять коллекцию?
-        Ответы на эти вопросы могут определить, какой алгоритм будет работать лучше всего в каждой ситуации. Некоторым алгоритмам, таким как сортировка слиянием, может потребоваться много места или памяти для работы, тогда как сортировка вставкой не всегда самая быстрая, но для запуска не требуется много ресурсов.
-        Прежде чем решить, какой алгоритм сортировки использовать, вам следует определить свои требования и принять во внимание ограничения вашей системы.
-    </P>
+
+    <p>
+        <h3><span>Компромиссы алгоритмов сортировки</span></h3>
+    </p>
+    <p>
+        При выборе подходящего алгоритма сортировки для вашей задачи важно учитывать различные факторы. Давайте рассмотрим несколько вопросов, которые помогут вам сделать правильный выбор:
+    </p>
+
+    <h4>Размер коллекции</h4>
+    <h5>Маленькие коллекции:</h5>
+    <p>
+        Для небольших объемов данных, простые алгоритмы сортировки, такие как сортировка вставкой, могут быть предпочтительными. Они не требуют много ресурсов и обеспечивают относительно хорошую производительность.
+    </p>
+    <h5>Большие коллекции:</h5>
+    <p>
+        Для крупных наборов данных, алгоритмы с более низкой временной сложностью, такие как быстрая сортировка (O(n log n)), могут быть более эффективными.
+    </p>
+    <h4>Доступная память</h4>
+    <h5>Ограниченные ресурсы:</h5>
+    <p>
+        Если у вас ограниченные ресурсы памяти, стоит обратить внимание на алгоритмы сортировки, которые не требуют большого объема дополнительной памяти. Например, сортировка слиянием может потребовать дополнительного места, в то время как быстрая сортировка обычно работает "на месте".
+    </p>
+    <h4>Необходимость изменения коллекции</h4>
+    <h5>Неизменяемые коллекции:</h5>
+    <p>
+        Если вам важно сохранить неизменным исходный порядок элементов, выбирайте алгоритмы, которые сохраняют относительный порядок элементов с одинаковыми значениями. Сортировка слиянием хорошо подходит для этого.
+    </p>
+    <h5>Изменяемые коллекции:</h5>
+    <p>
+        Если вам нужно часто добавлять или удалять элементы, обратите внимание на алгоритмы сортировки, которые лучше справляются с частыми изменениями, такие как сортировка вставкой.
+        Выбор подходящего алгоритма сортировки зависит от вашей конкретной задачи и требований. И помните, каждый алгоритм имеет свои компромиссы, поэтому важно адаптировать их под конкретные условия вашего проекта.
+    </p>
+
+    <p>
+        <h3><span>Big O</span></h3>
+        <span>Big O - это термин, используемый для оценки верхней границы (наихудшего случая), временной сложности алгоритма.</span>
+        Простыми словами Big O показывает, как будет меняться производительность алгоритма с зависимости от роста входящих данных.
+        Если мы будем увеличивать количество входящих данных, то у нас может расти количество операций и время, за которое выполнится алгоритм. Также может расти количество памяти, используемой данным алгоритмом для обработки входного объема данных. Big O будет показывать скорость роста времени исполнения алгоритма.
+    </p>
+
+    <p>
+        <h3><span>Примеры сложностей Big O:</span></h3>
+    </p>
+    <p>
+        <span>O(1): Константная сложность.</span> Время выполнения алгоритма не зависит от размера входных данных. Например, доступ к элементу массива по индексу.
+    </p>
+    <p>
+        <span>O(log n): Логарифмическая сложность.</span> Время выполнения алгоритма растет медленно с увеличением размера входных данных. Например, бинарный поиск в отсортированном массиве.
+        Простейший пример — бинарный поиск. Если массив отсортирован, мы можем проверить, есть ли в нём какое-то конкретное значение, методом деления пополам.
+        Проверим средний элемент, если он больше искомого, то отбросим вторую половину массива — там его точно нет. Если же меньше, то наоборот — отбросим начальную половину.
+        И так будем продолжать делить пополам, в итоге проверим log n элементов.
+    </p>
+    <p>
+        <span>O(n): Линейная сложность.</span> Время выполнения алгоритма пропорционально размеру входных данных. Например, просмотр всех элементов в массиве,
+        или же алгоритм поиска наибольшего элемента в неотсортированном массиве. Нам придётся пройтись по всем n элементам массива, чтобы понять, какой из них максимальный.
+    </p>
+    <p>
+        <span>O(n log n): Линейно-логарифмическая сложность.</span> Время выполнения алгоритма растет быстрее, чем линейно, но медленнее, чем квадратично. Например, сортировка слиянием (merge sort).
+    </p>
+    <p>
+        <span>O(n^2): Квадратичная сложность.</span> Время выполнения алгоритма зависит от квадрата размера входных данных. Например, сортировка пузырьком (bubble sort).
+    </p>
+    <p>
+        <span>O(n^3): Кубическая сложность.</span> Время выполнения алгоритма зависит от размера входных данных в кубе. Например, алгоритмы, которые имеют три вложенных цикла, такие как некоторые методы многомерной обработки данных.
+    </p>
+    <p>
+        <span>O(n!): Факториальная сложность.</span> Это самая высокая степень роста времени выполнения алгоритма. Время выполнения алгоритма растет факториально от размера входных данных. Этот тип сложности встречается, например, при переборе всех возможных комбинаций элементов, что делает его чрезвычайно неэффективным для больших значений n.
+    </p>
+
+    <p>
+        <h3><span>Big O для алгоритмов сортировки</span></h3>
+    </p>
+    <div class="" style="border-collapse: collapse; width: 100%;">
+        <table>
+            <tr>
+                <th>Алгоритм</th>
+                <th>Наилучший случай</th>
+                <th>Средний случай</th>
+                <th>Наихудший случай</th>
+            </tr>
+            <tr>
+                <td>Bubble Sort</td>
+                <td>O(n)</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+            </tr>
+            <tr>
+                <td>Coctail Sort</td>
+                <td>O(n)</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+            </tr>
+            <tr>
+                <td>Insertion Sort</td>
+                <td>O(n)</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+            </tr>
+            <tr>
+                <td>Shell Sort</td>
+                <td>O(n log n)</td>
+                <td>O(n log^2 n)</td>
+                <td>O(n log^2 n)</td>
+            </tr>
+            <tr>
+                <td>Tree Sort</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n^2)</td>
+            </tr>
+            <tr>
+                <td>Heap Sort</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+            </tr>
+            <tr>
+                <td>Selection Sort</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+            </tr>
+            <tr>
+                <td>Gnome Sort</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+                <td>O(n^2)</td>
+            </tr>
+            <tr>
+                <td>Radix Sort</td>
+                <td>O(nk)</td>
+                <td>O(nk)</td>
+                <td>O(nk)</td>
+            </tr>
+            <tr>
+                <td>Merge Sort</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+            </tr>
+            <tr>
+                <td>Quick Sort</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n^2)</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <h3><span>Тест</span></h3>
+    </p>
+    <form method="post" action="/SortAlgorithms/Index">
+        <fieldset class="form-group">
+            <div class="question">
+                <legend class="mt-4">Что представляют собой алгоритмы?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Программы на C#
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Процессы или наборы инструкций, решающих задачу
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Сложные математические формулы
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">На каком языке программирования рассматриваются алгоритмы в данном разделе?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Python
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        JavaScript
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        C#
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что такое алгоритмы сортировки?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Массивы данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Циклы в программировании
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Набор инструкций для упорядочивания элементов входных данных
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">В каком порядке чаще всего осуществляется сортировка?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios1" value="correct">
+                    <label class="form-check-label" for="optionsRadios1">
+                        По возрастанию (AZ, 0–9)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        По убыванию (ZA, 9–0)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Случайный порядок
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Почему алгоритмы сортировки важны?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Они делают код более красивым
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Они обязательны в каждом проекте
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Они снижают сложность проблемы и имеют применение во многих областях информатики
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Какой алгоритм может быть предпочтителен для небольших объемов данных?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Быстрая сортировка
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Сортировка вставкой
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Сортировка слиянием
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Какие алгоритмы эффективнее для крупных наборов данных?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Сортировка пузырьком
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Сортировка вставкой
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Быстрая сортировка
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">На что следует обращать внимание при ограниченных ресурсах памяти?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Количество циклов в алгоритме
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Алгоритмы, требующие много дополнительной памяти
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Отсутствие циклов в алгоритме
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Какие алгоритмы сохраняют относительный порядок элементов с одинаковыми значениями?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Сортировка пузырьком
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Сортировка слиянием
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Сортировка вставкой
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Какие алгоритмы лучше справляются с частыми изменениями в коллекции?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Сортировка слиянием
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Сортировка пузырьком
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Сортировка вставкой
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что измеряет термин Big O в алгоритмах?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question11" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Сложность алгоритма в среднем случае
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question11" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Нижняя граница временной сложности
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question11" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Верхняя граница временной сложности
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(1) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question12" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность зависит от логарифма размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question12" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Временная сложность постоянна и не зависит от размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question12" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Временная сложность линейна
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(log n) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question13" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность зависит от квадрата размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question13" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Временная сложность растет линейно с размером входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question13" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Логарифмическая временная сложность, растущая медленно с увеличением размера входных данных
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(n) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question14" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность зависит от линейной функции размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question14" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Временная сложность постоянна и не зависит от размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question14" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Временная сложность квадратичная
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(n log n) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question15" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность кубическая
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question15" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Линейно-логарифмическая временная сложность
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question15" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Временная сложность логарифмическая
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(n^2) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question16" id="optionsRadios1" value="correct">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность зависит от квадрата размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question16" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Временная сложность линейная
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question16" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Временная сложность логарифмическая
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(n^3) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question17" id="optionsRadios1" value="correct">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность зависит от размера входных данных в кубе
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question17" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Временная сложность линейная
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question17" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Линейно-логарифмическая временная сложность
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что означает O(n!) в Big O?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question18" id="optionsRadios1" value="correct">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Временная сложность зависит от факториала размера входных данных
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question18" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Временная сложность линейная
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question18" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Временная сложность логарифмическая
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Какой алгоритм сортировки имеет наихудший случай O(n^2)?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question19" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Сортировка слиянием
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question19" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Сортировка пузырьком
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question19" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Быстрая сортировка
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">Что такое алгоритм сортировки "подсчетом"?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question20" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Сортировка массива чисел от большего к меньшему
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question20" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2" value="correct">
+                        Сортировка, основанная на подсчете количества элементов с определенным значением
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question20" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Сортировка по алфавиту
+                    </label>
+                </div>
+            </div>
+
+            <input type="hidden" id="resultTest" name="resultTest" value="false">
+            <button type="submit" class="btn btn-primary" onclick="calculateResults()">Проверить результат</button>
+            <div id="results"></div>
+        </fieldset>
+    </form>
 </div>
+
+<script>
+    function calculateResults() {
+        // Инициализация счетчиков
+        var totalQuestions = 0;
+        var correctAnswers = 0;
+        var resultTest;
+        // Получение всех элементов с классом "question"
+        var questions = document.getElementsByClassName("question");
+        // Перебор всех вопросов
+        for (var i = 0; i < questions.length; i++) {
+            var question = questions[i];
+            // Получение ответа пользователя
+            var userAnswer = question.querySelector("input:checked");
+            // Получение правильного ответа
+            var correctAnswer = question.querySelector("input[value=\"correct\"]");
+            // Проверка, выбран ли ответ пользователем
+            if (userAnswer !== null) {
+                totalQuestions++;
+                // Проверка выбранного ответа на правильность
+                if (userAnswer === correctAnswer) {
+                    correctAnswers++;
+                }
+            }
+        }
+
+        if (totalQuestions === correctAnswers) {
+            resultTest = true;
+        } else {
+            resultTest = false;
+        }
+
+        // Установка значения resultTest в скрытое поле формы
+        document.getElementById("resultTest").value = resultTest;
+
+        // Вывод результатов
+        var resultsMessage = "Вы ответили правильно на " + correctAnswers + " из " + totalQuestions + " вопросов.";
+        document.getElementById("results").innerHTML = resultsMessage;
+    }
+</script>
+
+
