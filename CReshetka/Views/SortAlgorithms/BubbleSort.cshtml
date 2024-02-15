@@ -5,45 +5,92 @@
 
 <div class="container">
     <p>
-        Один из наиболее известных и часто спрашиваемых на собеседованиях алгоритмов сортировки. Работает за квадратичное время <span>O(n*n)</span>.
+        Сортировка пузырьком (Bubble Sort) - это один из простых алгоритмов сортировки, который многие изучают на ранних этапах обучения программированию. Этот алгоритм получил свое название из-за того, что более крупные элементы "всплывают" в конец массива, как пузырек воды всплывает на поверхность.
     </p>
     <p>
-        Принцип работы достаточно прост: последовательно сравниваются два рядом стоящих элемента, и если левый больше правого, то они меняются местами, после чего сравниваются следующие элементы. И так повторяется до тех пор, пока все элементы не будут упорядочены.
+        Основная идея сортировки пузырьком заключается в многократном проходе по массиву. На каждом проходе сравниваются два соседних элемента, и если они находятся в неправильном порядке, они меняются местами. Этот процесс повторяется до тех пор, пока не будет достигнут правильный порядок всех элементов. Другими словами принцип работы заключается в том, что последовательно сравниваются два рядом стоящих элемента, и если левый больше правого, то они меняются местами, после чего сравниваются следующие элементы. И так повторяется до тех пор, пока все элементы не будут упорядочены.
     </p>
+    <p>
+        Производительность сортировки пузырьком неоптимальна для больших массивов, так как ее временная сложность составляет O(n^2). Однако, из-за своей простоты и понятности, она может быть использована в учебных или простых сценариях, где размер данных невелик. В реальных приложениях часто предпочитают более эффективные алгоритмы сортировки, такие как QuickSort или MergeSort.
+    </p>
+    <p>
+        <h3><span>Как работает сортировка пузырьком</span></h3>
+    <p>
+        <span>Проходы:</span>
+    </p>
+    <p>
+        Алгоритм проходит по массиву многократно.
+        На каждом проходе сравниваются два соседних элемента, начиная с начала массива.
+    </p>
+    <br />
+    <p>
+        <span>Сравнение и обмен:</span>
+    </p>
+    <p>
+        Если текущий элемент больше следующего, то они меняются местами.
+        Таким образом, более крупные элементы "всплывают" в конец массива, а меньшие элементы "опускаются" вниз.
+    </p>
+    <br />
+    <p>
+        <span>Постепенная сортировка:</span>
+    </p>
+    <p>
+        После первого прохода наибольший элемент находится в конце массива.
+        После второго прохода следующий по величине элемент занимает предпоследнее место, и так далее.
+        Процесс продолжается до тех пор, пока массив полностью не будет отсортирован.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
 
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Прост в реализации и понимании.
+    </p>
+    <p>
+        2. Не требует дополнительной памяти, так как сортировка выполняется "на месте".
+    </p>
+    <br/>
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Низкая производительность для больших массивов из-за временной сложности O(n^2).
+    </p>
+    <p>
+        2. Неэффективен в сценариях, где требуется высокая производительность сортировки.
+    </p>
     <p>
         <h3><span>Пример сортировки пузырьком на C#:</span></h3>
     </p>
     @* упростить код не забудь!*@
 <pre>
-<code> 
-using System;
-
-class BubbleSort
+<code>
+    public class BubbleSort
 {
-    static void Main()
+    public static void Main()
     {
-        int[] array = { 64, 34, 25, 12, 22, 11, 90 };
+        int[] arrayToSort = { 64, 34, 25, 12, 22, 11, 90 };
 
-        Console.WriteLine("Исходный массив:");
-        PrintArray(array);
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
 
-        BubbleSortAlgorithm(array);
+        // Вызываем метод сортировки
+        PerformBubbleSort(arrayToSort);
 
-        Console.WriteLine("\nОтсортированный массив:");
-        PrintArray(array);
+        Console.WriteLine("Sorted array: " + string.Join(", ", arrayToSort));
     }
 
-    static void BubbleSortAlgorithm(int[] arr)
+    public static void PerformBubbleSort(int[] arr)
     {
         int n = arr.Length;
         for (int i = 0; i < n - 1; i++)
         {
-            for (int j = 0; j < n - i - 1; j++)
+            for (int j = 0; j < n - 1 - i; j++)
             {
+                // Сравниваем соседние элементы
                 if (arr[j] > arr[j + 1])
                 {
-                    // Обмен элементов, если они находятся в неправильном порядке
+                    // Меняем их местами, если они находятся в неправильном порядке
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -51,16 +98,9 @@ class BubbleSort
             }
         }
     }
+}
 
-    static void PrintArray(int[] arr)
-    {
-        foreach (var item in arr)
-        {
-            Console.Write(item + " ");
-        }
-        Console.WriteLine();
-    }
-}    </code>
+</code>
 </pre>
 
     <p>
@@ -77,136 +117,8 @@ class BubbleSort
     <div style="align-content:center">
         <iframe width="1280" height="720" src="https://www.youtube.com/embed/PD1Nn4fHcts?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Сортировка пузырьком (bubble sort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-
-    <p>
-        <h3><span>Тест</span></h3>
-    </p>
-    <form method="post" action="/SortAlgorithms/BubbleSort">
-        <fieldset class="form-group">
-            <div class="question">
-                <legend class="mt-4">Какое квадратичное время у сортировки пузырьком?</legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios1">
-                    <label class="form-check-label" for="optionsRadios1">
-                        O(1)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios2">
-                    <label class="form-check-label" for="optionsRadios2">
-                        O(log n)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios3">
-                    <label class="form-check-label" for="optionsRadios3">
-                        O(n)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios4">
-                        O(n log n)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios5" value="correct">
-                    <label class="form-check-label" for="optionsRadios5">
-                        O(n^2)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios6">
-                    <label class="form-check-label" for="optionsRadios6">
-                        O(n^3)
-                    </label>
-                </div>
-            </div>
-
-            <div class="question">
-                <legend class="mt-4">Какое квадратичное время у сортировки пузырьком?</legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios1">
-                    <label class="form-check-label" for="optionsRadios1">
-                        O(1)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios2">
-                    <label class="form-check-label" for="optionsRadios2">
-                        O(log n)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios3">
-                    <label class="form-check-label" for="optionsRadios3">
-                        O(n)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios4">
-                        O(n log n)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios5" value="correct">
-                    <label class="form-check-label" for="optionsRadios5">
-                        O(n^2)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios6">
-                    <label class="form-check-label" for="optionsRadios6">
-                        O(n^3)
-                    </label>
-                </div>
-            </div>
-            <input type="hidden" id="resultTest" name="resultTest" value="false">
-            <button type="submit" class="btn btn-primary" onclick="calculateResults()">Проверить результат</button>
-            <div id="results"></div>
-        </fieldset>
-    </form>
 </div>
 
 
-<script>
-    function calculateResults() {
-        // Инициализация счетчиков
-        var totalQuestions = 0;
-        var correctAnswers = 0;
-        var resultTest;
-        // Получение всех элементов с классом "question"
-        var questions = document.getElementsByClassName("question");
-        // Перебор всех вопросов
-        for (var i = 0; i < questions.length; i++) {
-            var question = questions[i];
-            // Получение ответа пользователя
-            var userAnswer = question.querySelector("input:checked");
-            // Получение правильного ответа
-            var correctAnswer = question.querySelector("input[value=\"correct\"]");
-            // Проверка, выбран ли ответ пользователем
-            if (userAnswer !== null) {
-                totalQuestions++;
-                // Проверка выбранного ответа на правильность
-                if (userAnswer === correctAnswer) {
-                    correctAnswers++;
-                }
-            }
-        }
 
-        if (totalQuestions === correctAnswers) {
-            resultTest = true;
-        } else {
-            resultTest = false;
-        }
-
-        // Установка значения resultTest в скрытое поле формы
-        document.getElementById("resultTest").value = resultTest;
-
-        // Вывод результатов
-        var resultsMessage = "Вы ответили правильно на " + correctAnswers + " из " + totalQuestions + " вопросов.";
-        document.getElementById("results").innerHTML = resultsMessage;
-    }
-</script>
 

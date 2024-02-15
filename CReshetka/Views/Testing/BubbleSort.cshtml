@@ -1,10 +1,320 @@
 ﻿@{
-    ViewData["Title"] = "Тестирование";
+    ViewData["Title"] = "Сортировка пузырьком (Bubble Sort)";
 }
-
 <h1>@ViewData["Title"]</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcomesdxsds</h1>
-    <p>testing.</p>
+<div>
+    <form method="post">
+        <fieldset class="form-group">
+            <div class="question">
+                <legend class="mt-4">1. Какова временная сложность сортировки пузырьком для больших массивов?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        O(n)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        O(n log n)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        O(n^2)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios4">
+                        O(log n)
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">2. Что происходит на каждом проходе алгоритма сортировки пузырьком?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Элементы случайным образом перемещаются в массиве
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Две случайные пары элементов меняются местами
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Сравниваются два соседних элемента и при необходимости меняются местами
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios4">
+                        Элементы упорядочиваются по убыванию
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">3. Какое преимущество имеет сортировка пузырьком?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Требует меньше времени для выполнения
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Прост в реализации и понимании
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Эффективен для больших массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Требует дополнительной памяти
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">4. Какие элементы "всплывают" в конец массива при сортировке пузырьком?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Меньшие элементы
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Большие элементы
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Случайные элементы
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Элементы не изменяют своё положение
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">5. Какой недостаток характерен для сортировки пузырьком?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Высокая производительность для больших массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Сложность реализации
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Низкая производительность для больших массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Эффективность в сценариях требующих высокой производительности
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">6. Какие элементы сравниваются на каждом проходе сортировки пузырьком?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Элементы с одинаковыми значениями
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Соседние элементы
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Элементы в середине массива
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Произвольные элементы
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">7. Что происходит после второго прохода сортировки пузырьком?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Второй по величине элемент находится в конце массива
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Второй по величине элемент занимает предпоследнее место
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Массив полностью упорядочен
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Происходит обмен случайных элементов
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">8. Какой будет результат сортировки пузырьком для массива, в котором все элементы уже упорядочены по возрастанию?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios1" value="correct">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Массив останется неизменным
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Элементы будут перемешаны случайным образом
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Произойдет обмен всех элементов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Массив будет отсортирован в обратном порядке
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">9. Как изменится производительность сортировки пузырьком, если предварительно проверить, отсортирован ли массив?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Улучшится
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Ухудшится
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios3" value="correct">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Не изменится
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">10. Может ли сортировка пузырьком быть эффективной, если массив содержит большое количество дубликатов?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios1" value="correct">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Да
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios2">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Нет
+                    </label>
+                </div>
+            </div>
+
+            <input type="hidden" id="resultTest" name="resultTest" value="false">
+            <input type="hidden" id="correctAnswers" name="correctAnswers" value="" />
+            <input type="hidden" id="resultsMessage" name="resultsMessage" value="" />
+            <input type="hidden" id="totalQuestions" name="totalQuestions" value="" />
+            <button type="submit" class="btn btn-primary" onclick="calculateResults()">Проверить результат</button>
+        </fieldset>
+    </form>
 </div>
+
+<script>
+    function calculateResults() {
+        // Инициализация счетчиков
+        var correctAnswers = 0;
+        var resultTest;
+        // Получение всех элементов с классом "question"
+        var questions = document.getElementsByClassName("question");
+        // Перебор всех вопросов
+        for (var i = 0; i < questions.length; i++) {
+            var question = questions[i];
+            // Получение ответа пользователя
+            var userAnswer = question.querySelector("input:checked");
+            // Получение правильного ответа
+            var correctAnswer = question.querySelector("input[value=\"correct\"]");
+            // Проверка, выбран ли ответ пользователем
+            if (userAnswer !== null) {
+                // Проверка выбранного ответа на правильность
+                if (userAnswer === correctAnswer) {
+                    correctAnswers++;
+                }
+            }
+        }
+
+        if (questions.length === correctAnswers) {
+            resultTest = true;
+            resultsMessage = "Тест пройден успешно";
+        } else {
+            resultTest = false;
+            resultsMessage = "К сожалению, вы не прошли тест, прочитайте теорию и снова вернитесь к тесту";
+        }
+
+        // Установка значения resultTest в скрытое поле формы
+        document.getElementById("resultTest").value = resultTest;
+        document.getElementById("correctAnswers").value = correctAnswers;
+        document.getElementById("resultsMessage").value = resultsMessage;
+        document.getElementById("totalQuestions").value = questions.length;
+    }
+</script>
+
+
+

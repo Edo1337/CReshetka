@@ -28,11 +28,11 @@ namespace CReshetka.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SortAlgorithms(bool resultTest, int correctAnswers, string resultsMessage, int totalQuestions)
+        public IActionResult SortAlgorithms(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == "Алгоритмы сортировки");
+            var nameTest = "Алгоритмы сортировки";
+            var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == nameTest);
 
             // Проверка, выполнил ли человек тест верно, если так, то
             // только в этом случае обращаемся к БД и смотрим проходил ли пользователь тест ранее
@@ -43,15 +43,12 @@ namespace CReshetka.Controllers
                 {
                     Timestamp = DateTime.Now,
                     UserId = userId,
-                    NameTest = "Алгоритмы сортировки"
+                    NameTest = nameTest
                 };
 
                 _context.TestResults.Add(testResult);
                 _context.SaveChanges();
-
             }
-
-            //var totalQuestions = 20;
 
             ViewBag.ResultsMessage = resultsMessage;
             ViewBag.CorrectAnswers = correctAnswers;
@@ -59,6 +56,42 @@ namespace CReshetka.Controllers
 
             return View("ResultsView");
         }
+
+        [HttpGet]
+        public IActionResult BubbleSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BubbleSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var nameTest = "Сортировка пузырьком (Bubble Sort)";
+            var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == nameTest);
+
+            // Проверка, выполнил ли человек тест верно, если так, то
+            // только в этом случае обращаемся к БД и смотрим проходил ли пользователь тест ранее
+            if (resultTest && !isComplited)
+            {
+                // Пользователь не проходил тест ранее, записываем результаты
+                var testResult = new TestResult
+                {
+                    Timestamp = DateTime.Now,
+                    UserId = userId,
+                    NameTest = nameTest
+                };
+
+                _context.TestResults.Add(testResult);
+                _context.SaveChanges();
+            }
+
+            ViewBag.ResultsMessage = resultsMessage;
+            ViewBag.CorrectAnswers = correctAnswers;
+            ViewBag.TotalQuestions = totalQuestions;
+
+            return View("ResultsView");
+        }
+
 
         public IActionResult ResultsView()
         {
