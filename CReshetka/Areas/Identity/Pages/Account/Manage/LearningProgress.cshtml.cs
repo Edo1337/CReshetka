@@ -19,14 +19,14 @@ namespace CReshetka.Areas.Identity.Pages.Account.Manage
     public class LearningProgressModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
 
         public LearningProgressModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            ApplicationDbContext context)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
+            _context = context;
         }
 
         /// <summary>

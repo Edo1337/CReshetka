@@ -1,4 +1,5 @@
-﻿using CReshetka.Data;
+﻿using CReshetka.Constants;
+using CReshetka.Data;
 using CReshetka.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,11 +29,11 @@ namespace CReshetka.Controllers
         [HttpPost]
         public IActionResult BubbleSort(bool resultTest)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Получение UserId текущего пользователя
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Проверка, проходил ли пользователь тест ранее
             var hasCompletedTest = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == "Сортировка пузырьком");
 
+            // Проверка, проходил ли пользователь тест ранее и выполнил ли он его верно в этот раз
             if (!hasCompletedTest && resultTest)
             {
                 // Пользователь не проходил тест ранее, записываем результаты
@@ -45,11 +46,12 @@ namespace CReshetka.Controllers
 
                 _context.TestResults.Add(testResult);
                 _context.SaveChanges();
+
             }
 
             // Подготавливаем данные для передачи в представление
-            var correctAnswers = 2;// ваша логика для подсчета правильных ответов
-            var totalQuestions = 2;// ваша логика для подсчета общего числа вопросов
+            var correctAnswers = 2;
+            var totalQuestions = 2;
 
             ViewBag.ResultsMessage = "Ваши результаты сохранены.";
             ViewBag.CorrectAnswers = correctAnswers;
