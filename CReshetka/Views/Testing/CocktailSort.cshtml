@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Сортировка пузырьком (Bubble Sort)";
+    ViewData["Title"] = "Шейкерная сортировка (Cocktail Sort)";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -7,7 +7,7 @@
     <form method="post">
         <fieldset class="form-group">
             <div class="question">
-                <legend class="mt-4">1. Какова временная сложность сортировки пузырьком для больших массивов?</legend>
+                <legend class="mt-4">1. Какова временная сложность шейкерной сортировки (Cocktail Sort) для больших массивов?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question1" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
@@ -35,235 +35,225 @@
             </div>
 
             <div class="question">
-                <legend class="mt-4">2. Что происходит на каждом проходе алгоритма сортировки пузырьком?</legend>
+                <legend class="mt-4">2. Что происходит в процессе прохода вперед шейкерной сортировки?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question2" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Элементы случайным образом перемещаются в массиве
+                        Удаление элементов из массива
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question2" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Две случайные пары элементов меняются местами
+                        Перестановка элементов в случайном порядке
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question2" id="optionsRadios3" value="correct">
                     <label class="form-check-label" for="optionsRadios3">
-                        Сравниваются два соседних элемента и при необходимости меняются местами
+                        Обмен местами соседними элементами, если они находятся в неправильном порядке
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question2" id="optionsRadios4">
                     <label class="form-check-label" for="optionsRadios4">
-                        Элементы упорядочиваются по убыванию
+                        Создание временного массива
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">3. Какое преимущество имеет сортировка пузырьком?</legend>
+                <legend class="mt-4">3. Какова основная идея шейкерной сортировки (Cocktail Sort)?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question3" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Требует меньше времени для выполнения
+                        Удаление элементов из массива
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios2" value="correct">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Прост в реализации и понимании
+                        Сортировка элементов по возрастанию
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios3">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios3" value="correct">
                     <label class="form-check-label" for="optionsRadios3">
-                        Эффективен для больших массивов
+                        Обмениваться местами соседними элементами
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question3" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios3">
-                        Требует дополнительной памяти
+                    <label class="form-check-label" for="optionsRadios4">
+                        Использование дополнительной памяти
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">4. Какие элементы "всплывают" в конец массива при сортировке пузырьком?</legend>
+                <legend class="mt-4">4. Какие проходы выполняет шейкерная сортировка?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question4" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Меньшие элементы
+                        Только вперед
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios2" value="correct">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Большие элементы
+                        Только назад
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios3">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios3" value="correct">
                     <label class="form-check-label" for="optionsRadios3">
-                        Случайные элементы
+                        Вперед и назад
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question4" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios3">
-                        Элементы не изменяют своё положение
+                    <label class="form-check-label" for="optionsRadios4">
+                        Случайные проходы
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">5. Какой недостаток характерен для сортировки пузырьком?</legend>
+                <legend class="mt-4">5. Что происходит в процессе прохода назад?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question5" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Высокая производительность для больших массивов
+                        Удаление элементов из массива
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question5" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Сложность реализации
+                        Перестановка элементов в случайном порядке
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question5" id="optionsRadios3" value="correct">
                     <label class="form-check-label" for="optionsRadios3">
-                        Низкая производительность для больших массивов
+                        Обмен местами элементами, если они находятся в неправильном порядке
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question5" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios3">
-                        Эффективность в сценариях требующих высокой производительности
+                    <label class="form-check-label" for="optionsRadios4">
+                        Создание временного массива
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">6. Какие элементы сравниваются на каждом проходе сортировки пузырьком?</legend>
+                <legend class="mt-4">6. Какие действия выполняет метод "Swap"?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question6" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Элементы с одинаковыми значениями
+                        Удаляет элемент из массива
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios2" value="correct">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Соседние элементы
+                        Вставляет элемент в массив
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios3">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios3" value="correct">
                     <label class="form-check-label" for="optionsRadios3">
-                        Элементы в середине массива
+                        Обменивает местами два элемента массива
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question6" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios3">
-                        Произвольные элементы
+                    <label class="form-check-label" for="optionsRadios4">
+                        Изменяет порядок элементов в массиве
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">7. Что происходит после второго прохода сортировки пузырьком?</legend>
+                <legend class="mt-4">7. Какой вывод делает программа после сортировки?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question7" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Второй по величине элемент находится в конце массива
+                        Отсортированный массив
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios2" value="correct">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Второй по величине элемент занимает предпоследнее место
+                        Неотсортированный массив
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question7" id="optionsRadios3">
                     <label class="form-check-label" for="optionsRadios3">
-                        Массив полностью упорядочен
+                        Временной массив
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios3">
-                        Происходит обмен случайных элементов
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios4" value="correct">
+                    <label class="form-check-label" for="optionsRadios4">
+                        Отсортированный массив исходных данных
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">8. Какой будет результат сортировки пузырьком для массива, в котором все элементы уже упорядочены по возрастанию?</legend>
+                <legend class="mt-4">8. Каково преимущество шейкерной сортировки по сравнению с сортировкой пузырьком?</legend>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios1" value="correct">
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Массив останется неизменным
+                        Высокая производительность
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question8" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Элементы будут перемешаны случайным образом
+                        Низкая временная сложность
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question8" id="optionsRadios3">
                     <label class="form-check-label" for="optionsRadios3">
-                        Произойдет обмен всех элементов
+                        Не требует дополнительной памяти
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios4">
-                    <label class="form-check-label" for="optionsRadios3">
-                        Массив будет отсортирован в обратном порядке
+                    <input class="form-check-input" type="radio" name="question8" id="optionsRadios4" value="correct">
+                    <label class="form-check-label" for="optionsRadios4">
+                        Улучшенный механизм движения может быть более эффективным
                     </label>
                 </div>
             </div>
 
             <div class="question">
-                <legend class="mt-4">9. Как изменится производительность сортировки пузырьком, если предварительно проверить, отсортирован ли массив?</legend>
+                <legend class="mt-4">9. Какой недостаток шейкерной сортировки?</legend>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question9" id="optionsRadios1">
                     <label class="form-check-label" for="optionsRadios1">
-                        Улучшится
+                        Высокая производительность для больших массивов
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question9" id="optionsRadios2">
                     <label class="form-check-label" for="optionsRadios2">
-                        Ухудшится
+                        Временная сложность O(n log n)
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="question9" id="optionsRadios3" value="correct">
                     <label class="form-check-label" for="optionsRadios3">
-                        Не изменится
-                    </label>
-                </div>
-            </div>
-
-            <div class="question">
-                <legend class="mt-4">10. Может ли сортировка пузырьком быть эффективной, если массив содержит большое количество дубликатов?</legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios1" value="correct">
-                    <label class="form-check-label" for="optionsRadios1">
-                        Да
+                        Низкая производительность для больших массивов из-за временной сложности O(n^2)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="question10" id="optionsRadios2">
-                    <label class="form-check-label" for="optionsRadios2">
-                        Нет
+                    <input class="form-check-input" type="radio" name="question9" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios4">
+                        Отсутствие механизма движения
                     </label>
                 </div>
             </div>

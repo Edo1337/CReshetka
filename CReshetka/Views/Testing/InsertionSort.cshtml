@@ -1,0 +1,238 @@
+﻿@{
+    ViewData["Title"] = "Сортировка пузырьком (Bubble Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <form method="post">
+        <fieldset class="form-group">
+
+            <div class="question">
+                <legend class="mt-4">1. В чем заключается процесс сортировки вставками?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios1">
+                    <label class="form-check-label" for="optionsRadios1">
+                        Выбор случайного элемента и вставка его в начало массива
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios2" value="correct">
+                    <label class="form-check-label" for="optionsRadios2">
+                        Построение отсортированной последовательности путем обмена элементов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="optionsRadios3">
+                    <label class="form-check-label" for="optionsRadios3">
+                        Вставка каждого нового элемента в правильное место в отсортированной части массива
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">2. Какова временная сложность сортировки вставками для массива длиной n?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios4">
+                    <label class="form-check-label" for="optionsRadios4">
+                        O(n log n)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios5">
+                    <label class="form-check-label" for="optionsRadios5">
+                        O(n)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="optionsRadios6" value="correct">
+                    <label class="form-check-label" for="optionsRadios6">
+                        O(n^2)
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">3. Каким образом массив делится при использовании сортировки вставками?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios7">
+                    <label class="form-check-label" for="optionsRadios7">
+                        На четные и нечетные элементы
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios8" value="correct">
+                    <label class="form-check-label" for="optionsRadios8">
+                        На отсортированную и неотсортированную части
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question3" id="optionsRadios9">
+                    <label class="form-check-label" for="optionsRadios9">
+                        На половины
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">4. Какое преимущество имеет сортировка вставками?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios10" value="correct">
+                    <label class="form-check-label" for="optionsRadios10">
+                        Прост в реализации и понимании
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios11">
+                    <label class="form-check-label" for="optionsRadios11">
+                        Эффективен для больших массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question4" id="optionsRadios12">
+                    <label class="form-check-label" for="optionsRadios12">
+                        Сложен для понимания
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">5. Какой недостаток существует у сортировки вставками?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios13" value="correct">
+                    <label class="form-check-label" for="optionsRadios13">
+                        Низкая производительность для больших массивов из-за временной сложности O(n^2)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios14">
+                    <label class="form-check-label" for="optionsRadios14">
+                        Эффективен для всех типов массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question5" id="optionsRadios15">
+                    <label class="form-check-label" for="optionsRadios15">
+                        Прост в понимании для больших массивов
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">6. Как работает процесс вставки нового элемента в отсортированную часть массива?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios16" value="correct">
+                    <label class="form-check-label" for="optionsRadios16">
+                        Новый элемент сравнивается с уже упорядоченной частью, затем вставляется в правильное место
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios17">
+                    <label class="form-check-label" for="optionsRadios17">
+                        Новый элемент всегда вставляется в начало массива
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question6" id="optionsRadios18">
+                    <label class="form-check-label" for="optionsRadios18">
+                        Новый элемент меняет местами среди других элементов массива
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <legend class="mt-4">7. Какое преимущество имеет сортировка вставками?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios19">
+                    <label class="form-check-label" for="optionsRadios19">
+                        Низкая производительность для больших массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios20" value="correct">
+                    <label class="form-check-label" for="optionsRadios20">
+                        Прост в реализации и понимании, эффективен для небольших массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question7" id="optionsRadios21">
+                    <label class="form-check-label" for="optionsRadios21">
+                        Низкая эффективность для частично упорядоченных данных
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <legend class="mt-4">8. Для каких массивов сортировка вставками наиболее эффективна?</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question13" id="optionsRadios22">
+                    <label class="form-check-label" for="optionsRadios22">
+                        Только для полностью упорядоченных массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question13" id="optionsRadios23">
+                    <label class="form-check-label" for="optionsRadios23">
+                        Только для полностью случайных массивов
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question13" id="optionsRadios24" value="correct">
+                    <label class="form-check-label" for="optionsRadios24">
+                        Для небольших или частично упорядоченных массивов
+                    </label>
+                </div>
+            </div>
+
+            <input type="hidden" id="resultTest" name="resultTest" value="false">
+            <input type="hidden" id="correctAnswers" name="correctAnswers" value="" />
+            <input type="hidden" id="resultsMessage" name="resultsMessage" value="" />
+            <input type="hidden" id="totalQuestions" name="totalQuestions" value="" />
+            <br />
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-lg btn-light" onclick="calculateResults()">Проверить результат</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    function calculateResults() {
+        // Инициализация счетчиков
+        var correctAnswers = 0;
+        var resultTest;
+        // Получение всех элементов с классом "question"
+        var questions = document.getElementsByClassName("question");
+        // Перебор всех вопросов
+        for (var i = 0; i < questions.length; i++) {
+            var question = questions[i];
+            // Получение ответа пользователя
+            var userAnswer = question.querySelector("input:checked");
+            // Получение правильного ответа
+            var correctAnswer = question.querySelector("input[value=\"correct\"]");
+            // Проверка, выбран ли ответ пользователем
+            if (userAnswer !== null) {
+                // Проверка выбранного ответа на правильность
+                if (userAnswer === correctAnswer) {
+                    correctAnswers++;
+                }
+            }
+        }
+
+        if (questions.length === correctAnswers) {
+            resultTest = true;
+            resultsMessage = "Тест пройден успешно";
+        } else {
+            resultTest = false;
+            resultsMessage = "К сожалению, вы не прошли тест, прочитайте теорию и снова вернитесь к тесту";
+        }
+
+        // Установка значения resultTest в скрытое поле формы
+        document.getElementById("resultTest").value = resultTest;
+        document.getElementById("correctAnswers").value = correctAnswers;
+        document.getElementById("resultsMessage").value = resultsMessage;
+        document.getElementById("totalQuestions").value = questions.length;
+    }
+</script>
+
+
+

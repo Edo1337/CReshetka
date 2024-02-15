@@ -30,31 +30,7 @@ namespace CReshetka.Controllers
         [HttpPost]
         public IActionResult SortAlgorithms(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var nameTest = "Алгоритмы сортировки";
-            var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == nameTest);
-
-            // Проверка, выполнил ли человек тест верно, если так, то
-            // только в этом случае обращаемся к БД и смотрим проходил ли пользователь тест ранее
-            if (resultTest && !isComplited)
-            {
-                // Пользователь не проходил тест ранее, записываем результаты
-                var testResult = new TestResult
-                {
-                    Timestamp = DateTime.Now,
-                    UserId = userId,
-                    NameTest = nameTest
-                };
-
-                _context.TestResults.Add(testResult);
-                _context.SaveChanges();
-            }
-
-            ViewBag.ResultsMessage = resultsMessage;
-            ViewBag.CorrectAnswers = correctAnswers;
-            ViewBag.TotalQuestions = totalQuestions;
-
-            return View("ResultsView");
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Алгоритмы сортировки");
         }
 
         [HttpGet]
@@ -65,20 +41,47 @@ namespace CReshetka.Controllers
         [HttpPost]
         public IActionResult BubbleSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var nameTest = "Сортировка пузырьком (Bubble Sort)";
-            var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == nameTest);
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка пузырьком (Bubble Sort)");
+        }
+        
+        [HttpGet]
+        public IActionResult CocktailSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CocktailSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка пузырьком (Bubble Sort)");
+        }
+
+        [HttpGet]
+        public IActionResult InsertionSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult InsertionSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка пузырьком (Bubble Sort)");
+        }
+
+        [HttpPost]
+        public IActionResult ProcessTestResults(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions, string testName)
+        {
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == testName);
 
             // Проверка, выполнил ли человек тест верно, если так, то
             // только в этом случае обращаемся к БД и смотрим проходил ли пользователь тест ранее
-            if (resultTest && !isComplited)
+            if (resultTest && !_context.TestResults.Any(tr => tr.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && tr.NameTest == testName))
             {
                 // Пользователь не проходил тест ранее, записываем результаты
                 var testResult = new TestResult
                 {
                     Timestamp = DateTime.Now,
-                    UserId = userId,
-                    NameTest = nameTest
+                    UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    NameTest = testName
                 };
 
                 _context.TestResults.Add(testResult);
@@ -91,8 +94,7 @@ namespace CReshetka.Controllers
 
             return View("ResultsView");
         }
-
-
+        [HttpGet]
         public IActionResult ResultsView()
         {
             return View();
