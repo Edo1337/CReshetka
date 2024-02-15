@@ -15,46 +15,10 @@ namespace CReshetka.Controllers
             _context = context;
         }
 
-        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-
-        [HttpPost]
-        public IActionResult Index(bool resultTest)
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == "Алгоритмы сортировки");
-
-            // Проверка, выполнил ли человек тест верно, если так, то
-            // только в этом случае обращаемся к БД и смотрим проходил ли пользователь тест ранее
-            if (resultTest && !isComplited)
-            {
-                // Пользователь не проходил тест ранее, записываем результаты
-                var testResult = new TestResult
-                {
-                    Timestamp = DateTime.Now,
-                    UserId = userId,
-                    NameTest = "Алгоритмы сортировки"
-                };
-
-                _context.TestResults.Add(testResult);
-                _context.SaveChanges();
-
-            }
-
-            var correctAnswers = 20;
-            var totalQuestions = 20;
-
-            ViewBag.ResultsMessage = "Ваши результаты сохранены.";
-            ViewBag.CorrectAnswers = correctAnswers;
-            ViewBag.TotalQuestions = totalQuestions;
-
-            return View("ResultsView");
-        }
-
 
         [HttpGet]
         public IActionResult BubbleSort()

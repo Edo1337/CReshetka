@@ -1,8 +1,9 @@
 ﻿@{
-    ViewData["Title"] = "Test";
+    ViewData["Title"] = "Тестирование";
 }
 
-<div class="text-center">
-    <h1 class="display-4" style="margin-top: 20%">Welcome</h1>
-    <p>testing.</p>
-</div>
+<h1>@ViewData["Title"]</h1>
+
+    <p>Для прохождения тестирования нажмите на тему, по которой желаете пройти тест:</p>
+    <a class="nav-link" asp-area="" asp-controller="Testing" asp-action="SortAlgorithms">Алгоритмы сортировки</a>
+<a class="nav-link" asp-area="" asp-controller="Testing" asp-action="BubbleSort">Сортировка пузырьком (Bubble Sort)</a>
