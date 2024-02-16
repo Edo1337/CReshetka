@@ -55,10 +55,10 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Testing" asp-action="Index">Тестирование</a>
+                            <a class="nav-link" onclick="checkLogin()" asp-area="" asp-controller="Testing" asp-action="Index">Тестирование</a>
                         </li>
                     </ul>
-                <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -80,3 +80,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

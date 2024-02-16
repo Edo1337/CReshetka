@@ -1,5 +1,6 @@
 ﻿using CReshetka.Data;
 using CReshetka.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -7,6 +8,7 @@ using System.Security.Claims;
 
 namespace CReshetka.Controllers
 {
+    [Authorize]
     public class TestingController : Controller
     {
         private readonly ILogger<TestingController> _logger;
@@ -52,7 +54,7 @@ namespace CReshetka.Controllers
         [HttpPost]
         public IActionResult CocktailSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
         {
-            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка пузырьком (Bubble Sort)");
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Шейкерная сортировка (Cocktail Sort)");
         }
 
         [HttpGet]
@@ -63,7 +65,7 @@ namespace CReshetka.Controllers
         [HttpPost]
         public IActionResult InsertionSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
         {
-            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка пузырьком (Bubble Sort)");
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка вставками (Insertion Sort)");
         }
 
         [HttpPost]

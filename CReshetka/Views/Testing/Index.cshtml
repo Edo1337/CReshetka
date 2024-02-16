@@ -1,23 +1,43 @@
-﻿@{
+﻿@using CReshetka.Data
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
     ViewData["Title"] = "Тестирование";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<p><h4>Для прохождения тестирования и получения результатов нажмите на тему, по которой желаете пройти тест:</h4></p>
-<div class="testing">
-    <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="SortAlgorithms">Алгоритмы сортировки</a></h5>
-</div>
-<div class="testing">
-    <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="BubbleSort">Сортировка пузырьком (Bubble Sort)</a></h5>
-</div>
-<div class="testing">
-    <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="CocktailSort">Шейкерная сортировка (Cocktail Sort)</a></h5>
-</div>
-<div class="testing">
-    <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="InsertionSort">Сортировка вставками (Insertion Sort)</a></h5>
-</div>
-@* <div class="testing">
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div style="text-align:center">
+        <p>Пожалуйста, <a asp-area="Identity" asp-page="/Account/Register">зарегистрируйтесь</a> или <a asp-area="Identity" asp-page="/Account/Login">войдите в аккаунт</a> доступа к этой странице.</p>
+        <p>Вы будете перенаправлены <a asp-area="Identity" asp-page="/Account/Login">страницу входа</a>...</p>
+    </div>
+    <script>
+        setTimeout(function () {
+            window.location.href = '/Identity/Account/Login';
+        }, 10000);
+    </script>
+}
+else
+{
+    <p><h4>Для прохождения тестирования и получения результатов нажмите на тему, по которой желаете пройти тест:</h4></p>
+    <div class="testing">
+        <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="SortAlgorithms">Алгоритмы сортировки</a></h5>
+    </div>
+    <div class="testing">
+        <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="BubbleSort">Сортировка пузырьком (Bubble Sort)</a></h5>
+    </div>
+    <div class="testing">
+        <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="CocktailSort">Шейкерная сортировка (Cocktail Sort)</a></h5>
+    </div>
+    <div class="testing">
+        <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="InsertionSort">Сортировка вставками (Insertion Sort)</a></h5>
+    </div>
+
+    @* <div class="testing">
     <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="BubbleSort">Сортировка пузырьком (Bubble Sort)</a></h5>
 </div>
 <div class="testing">
@@ -26,4 +46,4 @@
 <div class="testing">
     <h5><a class="nav-link" asp-area="" asp-controller="Testing" asp-action="BubbleSort">Сортировка пузырьком (Bubble Sort)</a></h5>
 </div> *@
-
+}
