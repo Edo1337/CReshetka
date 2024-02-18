@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Сортировка деревом (Tree Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Сортировка деревом (Tree Sort) - это алгоритм сортировки, который использует бинарное дерево для упорядочивания элементов. Этот метод сортировки основан на структуре бинарного дерева поиска, где каждый элемент больше всех элементов в его левом поддереве и меньше всех элементов в его правом поддереве.
+    </p>
+    <p>
+        Основная идея сортировки деревом заключается в построении бинарного дерева из элементов массива, а затем обходе дерева в порядке возрастания (in-order traversal), что приводит к упорядоченному выводу. Вставка элементов в бинарное дерево и обход дерева происходят в среднем за O(log n) операций, что делает этот алгоритм эффективным для небольших и средних массивов данных.
+    </p>
+    <p>
+        <h3><span>Как работает сортировка деревом</span></h3>
+    </p>
+    <p>
+        <span>Построение бинарного дерева:</span>
+    </p>
+    <p>
+        Каждый элемент массива вставляется в бинарное дерево поиска с учетом его отношения к другим элементам.
+    </p>
+    <br />
+    <p>
+        <span>Обход дерева в порядке возрастания:</span>
+    </p>
+    <p>
+        Производится обход дерева в порядке возрастания, что приводит к упорядоченному выводу элементов.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Эффективен для небольших и средних массивов данных.
+    </p>
+    <p>
+        2. Сортировка выполняется "на месте", не требует дополнительной памяти, как многие другие методы.
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Не так эффективен для больших массивов данных.
+    </p>
+    <p>
+        2. Построение и обход дерева могут потребовать больше времени по сравнению с некоторыми другими методами сортировки.
+    </p>
+    <p>
+        <h3><span>Пример сортировки деревом на C#:</span></h3>
+    </p>
+<pre>
+<code>
+    public class Node
+{
+    public int key;
+    public Node left, right;
+
+    public Node(int item)
+    {
+        key = item;
+        left = right = null;
+    }
+}
+
+public class TreeSort
+{
+    Node root;
+
+    public TreeSort()
+    {
+        root = null;
+    }
+
+    public void Insert(int key)
+    {
+        root = InsertRec(root, key);
+    }
+
+    Node InsertRec(Node root, int key)
+    {
+        if (root == null)
+        {
+            root = new Node(key);
+            return root;
+        }
+
+        if (key < root.key)
+        {
+            root.left = InsertRec(root.left, key);
+        }
+        else if (key > root.key)
+        {
+            root.right = InsertRec(root.right, key);
+        }
+
+        return root;
+    }
+
+    public void InOrderTraversal()
+    {
+        InOrderTraversalRec(root);
+    }
+
+    void InOrderTraversalRec(Node root)
+    {
+        if (root != null)
+        {
+            InOrderTraversalRec(root.left);
+            Console.Write(root.key + " ");
+            InOrderTraversalRec(root.right);
+        }
+    }
+
+    public static void Main()
+    {
+        TreeSort treeSort = new TreeSort();
+        int[] arrayToSort = { 64, 34, 25, 12, 22, 11, 90 };
+
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
+
+        // Вставляем элементы в дерево
+        foreach (var item in arrayToSort)
+        {
+            treeSort.Insert(item);
+        }
+
+        Console.Write("Sorted array: ");
+        // Выводим упорядоченные элементы с помощью обхода дерева
+        treeSort.InOrderTraversal();
+    }
+}
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    @*Найди видео нормальное*@
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/example-tree-sort" title="Tree Sort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/suVMj0DLzFk?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Сортировка деревом (Tree sort), Пирамидальная сортировка (Heapsort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
