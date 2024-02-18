@@ -55,6 +55,12 @@ namespace CReshetka.Controllers
         {
             return View();
         }
+        
+        [HttpGet]
+        public IActionResult SelectionSort()
+        {
+            return View();
+        }
 
 
     }
