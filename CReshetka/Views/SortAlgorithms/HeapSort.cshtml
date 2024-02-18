@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Сортировка кучей (Heap Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Сортировка кучей (Heap Sort) - это эффективный алгоритм сортировки, который использует структуру данных под названием "куча" (heap). Куча представляет собой бинарное дерево, удовлетворяющее свойству кучи: значение каждого узла больше (или меньше) значений его дочерних узлов.
+    </p>
+    <p>
+        Основная идея сортировки кучей заключается в построении максимальной (или минимальной) кучи из заданного массива, а затем последовательном извлечении элементов из кучи и помещении их в упорядоченную часть массива. Сортировка кучей обладает временной сложностью O(n log n), что делает ее эффективной для больших массивов данных.
+    </p>
+    <p>
+        <h3><span>Как работает сортировка кучей</span></h3>
+    </p>
+    <p>
+        <span>Построение максимальной кучи:</span>
+    </p>
+    <p>
+        Из заданного массива строится максимальная куча, начиная с последнего уровня дерева и переходя вверх.
+    </p>
+    <br />
+    <p>
+        <span>Извлечение элементов из кучи:</span>
+    </p>
+    <p>
+        Максимальный элемент (в случае сортировки по возрастанию) извлекается из кучи и помещается в упорядоченную часть массива. Процесс повторяется до тех пор, пока куча не опустеет.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Эффективен для больших массивов данных.
+    </p>
+    <p>
+        2. Временная сложность O(n log n) делает его быстрым и эффективным.
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Не так прост в реализации, как, например, сортировка пузырьком.
+    </p>
+    <p>
+        2. Не является стабильным алгоритмом сортировки.
+    </p>
+    <p>
+        <h3><span>Пример сортировки кучей на C#:</span></h3>
+    </p>
+    @* упростить код не забудь!*@
+<pre>
+<code>
+    public class HeapSort
+{
+    public void Sort(int[] arr)
+    {
+        int n = arr.Length;
+
+        // Построение кучи
+        for (int i = n / 2 - 1; i >= 0; i--)
+        {
+            Heapify(arr, n, i);
+        }
+
+        // Извлечение элементов из кучи и помещение в упорядоченную часть массива
+        for (int i = n - 1; i > 0; i--)
+        {
+            // Обмен текущего элемента с корнем кучи
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // Перестройка кучи
+            Heapify(arr, i, 0);
+        }
+    }
+
+    void Heapify(int[] arr, int n, int i)
+    {
+        int largest = i; // Инициализация наибольшего элемента как корня
+        int left = 2 * i + 1; // Левый дочерний элемент
+        int right = 2 * i + 2; // Правый дочерний элемент
+
+        // Если левый дочерний элемент больше корня
+        if (left < n && arr[left] > arr[largest])
+        {
+            largest = left;
+        }
+
+        // Если правый дочерний элемент больше текущего наибольшего
+        if (right < n && arr[right] > arr[largest])
+        {
+            largest = right;
+        }
+
+        // Если наибольший элемент не корень
+        if (largest != i)
+        {
+            // Обмен значениями и рекурсивная перестройка кучи для поддерева
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            Heapify(arr, n, largest);
+        }
+    }
+}
+
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/_bkow6IykGM?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Heap Sort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/suVMj0DLzFk?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Сортировка деревом (Tree sort), Пирамидальная сортировка (Heapsort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
