@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Сортировка Шелла (Shell Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Сортировка Шелла (Shell Sort) - это усовершенствованный вариант сортировки вставками, который разбивает массив на подмассивы и сортирует их отдельно. Этот алгоритм был предложен Дональдом Шеллом в 1959 году. Сортировка Шелла улучшает производительность сортировки вставками, предварительно сортируя элементы с большими интервалами, а затем сокращая интервалы по мере продвижения алгоритма.
+    </p>
+    <p>
+        Основная идея сортировки Шелла заключается в том, чтобы начать с большого интервала, который позволяет близким значениям перемещаться быстро к своим финальным позициям. Затем интервал постепенно уменьшается, и процесс повторяется. После нескольких таких шагов алгоритм завершает сортировку.
+    </p>
+    <p>
+        Производительность сортировки Шелла зависит от выбора последовательности интервалов. В худшем случае временная сложность составляет O(n^2), но при правильном выборе интервалов алгоритм может быть значительно быстрее сортировки вставками.
+    </p>
+    <p>
+        <h3><span>Как работает сортировка Шелла</span></h3>
+    </p>
+    <p>
+        <span>Выбор интервалов:</span>
+    </p>
+    <p>
+        Алгоритм начинает с выбора последовательности интервалов, которые определяют, сколько элементов находится между сравниваемыми элементами.
+    </p>
+    <br />
+    <p>
+        <span>Сортировка сокращенных интервалов:</span>
+    </p>
+    <p>
+        Алгоритм сортирует подмассивы с большими интервалами, постепенно сокращая интервалы.
+    </p>
+    <br />
+    <p>
+        <span>Постепенное уменьшение интервалов:</span>
+    </p>
+    <p>
+        Процесс повторяется с уменьшением интервалов до минимального значения, завершая сортировку.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Улучшенная производительность по сравнению со сравнительно простыми алгоритмами, такими как сортировка вставками.
+    </p>
+    <p>
+        2. Может быть эффективным для средних и больших массивов данных.
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Зависимость от выбора последовательности интервалов.
+    </p>
+    <p>
+        2. В худшем случае может иметь временную сложность O(n^2).
+    </p>
+    <p>
+        <h3><span>Пример сортировки Шелла на C#:</span></h3>
+    </p>
+<pre>
+<code>
+    public class ShellSort
+{
+    public static void Main()
+    {
+        int[] arrayToSort = { 64, 34, 25, 12, 22, 11, 90 };
+
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
+
+        // Вызываем метод сортировки
+        PerformShellSort(arrayToSort);
+
+        Console.WriteLine("Sorted array: " + string.Join(", ", arrayToSort));
+    }
+
+    public static void PerformShellSort(int[] arr)
+    {
+        int n = arr.Length;
+        // Выбор последовательности интервалов
+        for (int gap = n / 2; gap > 0; gap /= 2)
+        {
+            for (int i = gap; i < n; i += 1)
+            {
+                int temp = arr[i];
+
+                int j;
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                {
+                    arr[j] = arr[j - gap];
+                }
+
+                arr[j] = temp;
+            }
+        }
+    }
+}
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/n4sk-SzGvZA?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Shell&#39;s Sort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/y7OpyJPsnmA?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Сортировка Шелла (Shell sort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>

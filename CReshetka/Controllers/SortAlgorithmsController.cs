@@ -26,52 +26,24 @@ namespace CReshetka.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult BubbleSort(bool resultTest)
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var hasCompletedTest = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == "Сортировка пузырьком");
-
-            // Проверка, проходил ли пользователь тест ранее и выполнил ли он его верно в этот раз
-            if (!hasCompletedTest && resultTest)
-            {
-                // Пользователь не проходил тест ранее, записываем результаты
-                var testResult = new TestResult
-                {
-                    Timestamp = DateTime.Now,
-                    UserId = userId,
-                    NameTest = "Сортировка пузырьком"
-                };
-
-                _context.TestResults.Add(testResult);
-                _context.SaveChanges();
-
-            }
-
-            // Подготавливаем данные для передачи в представление
-            var correctAnswers = 2;
-            var totalQuestions = 2;
-
-            ViewBag.ResultsMessage = "Ваши результаты сохранены.";
-            ViewBag.CorrectAnswers = correctAnswers;
-            ViewBag.TotalQuestions = totalQuestions;
-
-            return View("ResultsView");
-        }
-
-        public IActionResult ResultsView()
-        {
-            return View();
-        }
-
+        [HttpGet]
         public IActionResult CocktailSort()
         {
             return View();
         }
+
+        [HttpGet]
         public IActionResult InsertionSort()
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult ShellSort()
+        {
+            return View();
+        }
+
+
     }
 }
