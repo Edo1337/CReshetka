@@ -61,6 +61,12 @@ namespace CReshetka.Controllers
         {
             return View();
         }
+        
+        [HttpGet]
+        public IActionResult GnomeSort()
+        {
+            return View();
+        }
 
 
     }

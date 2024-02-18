@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Гномья сортировка (Gnome Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Гномья сортировка (Gnome Sort) - это простой алгоритм сортировки, который на каждом шаге сравнивает текущий элемент с предыдущим и, если они находятся в неправильном порядке, меняет их местами. Этот процесс повторяется до тех пор, пока не будет достигнут правильный порядок всех элементов.
+    </p>
+    <p>
+        Основная идея гномьей сортировки заключается в перемещении элементов массива вправо или влево до тех пор, пока не будет найдено правильное место для текущего элемента. Если текущий элемент больше предыдущего, то они меняются местами, и алгоритм возвращается к предыдущему элементу для проверки. Если текущий элемент больше предыдущего, шаги продолжаются до тех пор, пока массив не будет полностью отсортирован.
+    </p>
+    <p>
+        <h3><span>Как работает гномья сортировка</span></h3>
+    </p>
+    <p>
+        <span>Шаги:</span>
+    </p>
+    <p>
+        На каждом шаге сравнивается текущий элемент с предыдущим.
+    </p>
+    <br />
+    <p>
+        <span>Сравнение и обмен:</span>
+    </p>
+    <p>
+        Если текущий элемент больше предыдущего, они меняются местами.
+    </p>
+    <br />
+    <p>
+        <span>Перемещение:</span>
+    </p>
+    <p>
+        После обмена текущий элемент сравнивается с предыдущим, и процесс повторяется, пока не будет найдено правильное место.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Прост в реализации и понимании.
+    </p>
+    <p>
+        2. Не требует дополнительной памяти, так как сортировка выполняется "на месте".
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Низкая производительность для больших массивов из-за временной сложности O(n^2).
+    </p>
+    <p>
+        2. Не является самым эффективным алгоритмом сортировки для больших объемов данных.
+    </p>
+    <p>
+        <h3><span>Пример гномьей сортировки на C#:</span></h3>
+    </p>
+<pre>
+<code>
+    public class GnomeSort
+{
+    public static void Main()
+    {
+        int[] arrayToSort = { 64, 34, 25, 12, 22, 11, 90 };
+
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
+
+        // Вызываем метод сортировки
+        PerformGnomeSort(arrayToSort);
+
+        Console.WriteLine("Sorted array: " + string.Join(", ", arrayToSort));
+    }
+
+    public static void PerformGnomeSort(int[] arr)
+    {
+        int n = arr.Length;
+        int i = 0;
+
+        while (i < n)
+        {
+            if (i == 0 || arr[i] >= arr[i - 1])
+            {
+                i++;
+            }
+            else
+            {
+                // Если текущий элемент меньше предыдущего, меняем их местами и возвращаемся назад
+                int temp = arr[i];
+                arr[i] = arr[i - 1];
+                arr[i - 1] = temp;
+                i--;
+            }
+        }
+    }
+}
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/EdcWAw4Hcu0?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Gnome Sort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/G9lUWHns3SE?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Гномья сортировка (Gnome sort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
