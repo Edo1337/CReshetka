@@ -78,6 +78,12 @@ namespace CReshetka.Controllers
         public IActionResult MergeSort()
         {
             return View();
+        } 
+        
+        [HttpGet]
+        public IActionResult QuickSort()
+        {
+            return View();
         }
 
 

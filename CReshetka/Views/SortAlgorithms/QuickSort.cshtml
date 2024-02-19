@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Быстрая сортировка (Quick Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Быстрая сортировка (Quick Sort) - это эффективный алгоритм сортировки, использующий стратегию "разделяй и властвуй". Он был разработан в 1960-х годах Тони Хоаром и стал одним из самых широко используемых алгоритмов сортировки. Алгоритм основан на принципе выбора опорного элемента, разделения массива на две части и рекурсивной сортировке каждой из частей.
+    </p>
+    <p>
+        <h3><span>Принцип работы быстрой сортировки</span></h3>
+    </p>
+    <p>
+        <span>Выбор опорного элемента:</span>
+    </p>
+    <p>
+        Из массива выбирается опорный элемент. Это может быть любой элемент массива, но часто выбирается средний элемент.
+    </p>
+    <br />
+    <p>
+        <span>Разделение:</span>
+    </p>
+    <p>
+        Массив разделяется на две части так, чтобы элементы, меньшие опорного, находились слева, а элементы, большие опорного, находились справа. Опорный элемент занимает свое окончательное место в массиве.
+    </p>
+    <br />
+    <p>
+        <span>Рекурсивная сортировка:</span>
+    </p>
+    <p>
+        Рекурсивно применяем тот же алгоритм к обеим частям массива до тех пор, пока весь массив не будет упорядочен.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Эффективен для сортировки больших массивов.
+    </p>
+    <p>
+        2. В среднем имеет лучшую производительность, чем сортировка пузырьком или сортировка вставками.
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Неустойчив к предварительной упорядоченности массива.
+    </p>
+    <p>
+        2. Занимает дополнительную память при рекурсивных вызовах, что может вызвать переполнение стека для больших массивов.
+    </p>
+    <p>
+        <h3><span>Пример быстрой сортировки на C#:</span></h3>
+    </p>
+    @* упростить код не забудь!*@
+<pre>
+<code>
+    public class QuickSort
+{
+    public static void Main()
+    {
+        int[] arrayToSort = { 64, 34, 25, 12, 22, 11, 90 };
+
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
+
+        // Вызываем метод сортировки
+        PerformQuickSort(arrayToSort, 0, arrayToSort.Length - 1);
+
+        Console.WriteLine("Sorted array: " + string.Join(", ", arrayToSort));
+    }
+
+    public static void PerformQuickSort(int[] arr, int low, int high)
+    {
+        if (low < high)
+        {
+            // Находим индекс опорного элемента
+            int pivotIndex = Partition(arr, low, high);
+
+            // Рекурсивно сортируем обе части массива
+            PerformQuickSort(arr, low, pivotIndex - 1);
+            PerformQuickSort(arr, pivotIndex + 1, high);
+        }
+    }
+
+    public static int Partition(int[] arr, int low, int high)
+    {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++)
+        {
+            // Если текущий элемент меньше или равен опорному
+            if (arr[j] <= pivot)
+            {
+                i++;
+
+                // Меняем элементы местами
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        // Меняем опорный элемент с элементом на позиции (i + 1)
+        int tempPivot = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = tempPivot;
+
+        return i + 1;
+    }
+}
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/9IqV6ZSjuaI?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Quick Sort (LL pointers)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/fAQRcW78-_o?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Быстрая сортировка Хоара (quicksort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
