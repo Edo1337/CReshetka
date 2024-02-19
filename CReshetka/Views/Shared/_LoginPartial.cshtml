@@ -1,21 +1,27 @@
 ﻿@using CReshetka.Data
 @using Microsoft.AspNetCore.Identity
+
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav">
+
+<ul class="navbar-nav text-right">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
-        </li>
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link" style="text-transform: uppercase;">Logout</button>
-            </form>
+@*         <li>
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img src="/Uploads/c66254ee-3f9e-46bc-8490-bdfbe52aa42b.jpg" alt="" class="object-fit-fill rounded-md" style="height: 40px; width: 40px;"></a>
+        </li> *@
+
+        <li class="nav-item dropdown" style="">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">@User.Identity?.Name</a>
+            <div class="dropdown-menu" style="min-width:275px">
+                <a class="nav-link" style="color:aliceblue; text-align:center" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Мой профиль</a>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link" style="text-transform: uppercase;color:crimson;  margin: 0 auto; display: block;">
+                        Выйти
+                    </button>
+                </form>
+            </div>
         </li>
     }
     else
