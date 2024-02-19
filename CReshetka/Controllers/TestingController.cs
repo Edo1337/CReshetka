@@ -67,6 +67,61 @@ namespace CReshetka.Controllers
         {
             return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка вставками (Insertion Sort)");
         }
+        
+        [HttpGet]
+        public IActionResult ShellSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ShellSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка Шелла (Shell Sort)");
+        }
+        
+        [HttpGet]
+        public IActionResult TreeSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult TreeSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка деревом (Tree Sort)");
+        }
+        
+        [HttpGet]
+        public IActionResult HeapSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult HeapSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка кучей (Heap Sort)");
+        }
+        
+        [HttpGet]
+        public IActionResult SelectionSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SelectionSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка выбором (Selection ort)");
+        }
+        
+        [HttpGet]
+        public IActionResult GnomeSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult GnomeSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Гномья сортировка (Gnome Sort)");
+        }
 
         [HttpPost]
         public IActionResult ProcessTestResults(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions, string testName)

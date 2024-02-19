@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Линейная поразрядная сортировка (Radix Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Линейная поразрядная сортировка (Radix Sort) - это алгоритм сортировки, который сортирует целочисленные элементы, используя разряды чисел. Он относится к разрядным сортировкам и работает по принципу сортировки по каждому разряду от младшего к старшему. Данный алгоритм особенно полезен, когда элементы сортируются по нескольким разрядам, например, при сортировке чисел с фиксированной длиной.
+    </p>
+    <p>
+        Основная идея поразрядной сортировки заключается в том, чтобы многократно проходить через массив, каждый раз сортируя элементы по одному разряду. После прохода по всем разрядам массив оказывается полностью упорядоченным.
+    </p>
+    <p>
+        <h3><span>Как работает линейная поразрядная сортировка</span></h3>
+    </p>
+    <p>
+        <span>Проходы:</span>
+    </p>
+    <p>
+        Алгоритм проходит по массиву многократно, сортируя элементы по каждому разряду.
+    </p>
+    <br />
+    <p>
+        <span>Сортировка по разрядам:</span>
+    </p>
+    <p>
+        На каждом проходе элементы сортируются по текущему разряду, начиная с младшего.
+    </p>
+    <br />
+    <p>
+        <span>Постепенная сортировка:</span>
+    </p>
+    <p>
+        Процесс повторяется для каждого разряда до тех пор, пока все разряды не будут обработаны.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Эффективен для сортировки больших объемов данных с фиксированным числовым представлением.
+    </p>
+    <p>
+        2. Не зависит от исходного порядка элементов.
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Применим только к целочисленным данным.
+    </p>
+    <p>
+        2. В случае чисел с переменной длиной или чисел с плавающей запятой может потребоваться модификация.
+    </p>
+    <p>
+        <h3><span>Пример линейной поразрядной сортировки на C#:</span></h3>
+    </p>
+<pre>
+<code>
+    public class RadixSort
+{
+    public static void Main()
+    {
+        int[] arrayToSort = { 170, 45, 75, 90, 802, 24, 2, 66 };
+
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
+
+        // Вызываем метод сортировки
+        PerformRadixSort(arrayToSort);
+
+        Console.WriteLine("Sorted array: " + string.Join(", ", arrayToSort));
+    }
+
+    public static void PerformRadixSort(int[] arr)
+    {
+        // Находим максимальное число, чтобы узнать количество разрядов
+        int max = arr.Max();
+
+        // Применяем сортировку по каждому разряду
+        for (int exp = 1; max / exp > 0; exp *= 10)
+        {
+            CountingSort(arr, exp);
+        }
+    }
+
+    public static void CountingSort(int[] arr, int exp)
+    {
+        int n = arr.Length;
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        // Инициализируем массив count
+        for (int i = 0; i < 10; i++)
+        {
+            count[i] = 0;
+        }
+
+        // Считаем количество встречающихся цифр на текущем разряде
+        for (int i = 0; i < n; i++)
+        {
+            count[(arr[i] / exp) % 10]++;
+        }
+
+        // Преобразуем count[i] так, чтобы count[i] содержал текущую позицию цифры в output[]
+        for (int i = 1; i < 10; i++)
+        {
+            count[i] += count[i - 1];
+        }
+
+        // Строим выходной массив
+        for (int i = n - 1; i >= 0; i--)
+        {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        // Копируем выходной массив в исходный массив
+        for (int i = 0; i < n; i++)
+        {
+            arr[i] = output[i];
+        }
+    }
+}
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/LyRWppObda4?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Radix Sort (LSD)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/RvXagBAbFBM?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Поразрядная сортировка (Radix sort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
