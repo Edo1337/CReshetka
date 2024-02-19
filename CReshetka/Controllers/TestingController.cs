@@ -11,11 +11,9 @@ namespace CReshetka.Controllers
     [Authorize]
     public class TestingController : Controller
     {
-        private readonly ILogger<TestingController> _logger;
         private readonly ApplicationDbContext _context;
         public TestingController(ILogger<TestingController> logger, ApplicationDbContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
@@ -122,6 +120,39 @@ namespace CReshetka.Controllers
         {
             return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Гномья сортировка (Gnome Sort)");
         }
+        
+        [HttpGet]
+        public IActionResult RadixSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult RadixSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Поразрядная сортировка (Radix Sort)");
+        }
+        
+        [HttpGet]
+        public IActionResult MergeSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult MergeSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Сортировка слиянием (Merge Sort)");
+        }
+        
+        [HttpGet]
+        public IActionResult QuickSort()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult QuickSort(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions)
+        {
+            return ProcessTestResults(resultTest, resultsMessage, correctAnswers, totalQuestions, "Быстрая сортировка (Quick Sort)");
+        }
 
         [HttpPost]
         public IActionResult ProcessTestResults(bool resultTest, string resultsMessage, int correctAnswers, int totalQuestions, string testName)
@@ -129,8 +160,8 @@ namespace CReshetka.Controllers
             //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //var isComplited = _context.TestResults.Any(tr => tr.UserId == userId && tr.NameTest == testName);
 
-            // Проверка, выполнил ли человек тест верно, если так, то
-            // только в этом случае обращаемся к БД и смотрим проходил ли пользователь тест ранее
+            // Проверка, выполнил ли человек тест верно, если так, то только в этом случае
+            // обращаемся к БД и смотрим проходил ли пользователь тест ранее
             if (resultTest && !_context.TestResults.Any(tr => tr.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier) && tr.NameTest == testName))
             {
                 // Пользователь не проходил тест ранее, записываем результаты

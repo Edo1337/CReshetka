@@ -93,3 +93,86 @@ th {
     .testing:hover {
         color: darksalmon;
     }
+
+
+
+/* ќбновленные стили дл€ различных элементов €зыка C# */
+
+.code {
+    color: snow;
+}
+
+.keyword {
+    color: #569cd6; /* ÷вет ключевых слов */
+}
+
+.comment {
+    color: #6a9955; /* ÷вет комментариев */
+}
+
+.string {
+    color: #d69d85; /* ÷вет строк */
+}
+
+.number {
+    color: #b5cea8; /* ÷вет чисел */
+}
+
+.punctuation {
+    color: #ce9178; /* ÷вет знаков пунктуации */
+}
+
+.class {
+    color: #569cd6; /* ÷вет названи€ классов */
+}
+
+.method-name {
+    color: #dcdcaa; /* ÷вет названи€ методов */
+}
+
+.variable {
+    color: #9cdcfe; /* ÷вет переменных */
+}
+
+.parameter {
+    color: #9cdaaf; /* ÷вет параметров методов */
+}
+
+.code-editor {
+    max-width: 3000px;
+    background-color: #1d1e22;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 2px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.title {
+    font-family: Lato, sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 1.57px;
+    color: rgb(212 212 212);
+}
+
+.icon {
+    width: 20px;
+    transition: .2s ease;
+}
+
+    .icon:hover {
+        cursor: pointer;
+        border-radius: 50px;
+        background-color: #6e7281;
+    }
+
+.editor-content {
+    margin: 0 10px 10px;
+    color: snow;
+}
