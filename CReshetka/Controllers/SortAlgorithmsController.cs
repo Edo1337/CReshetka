@@ -72,6 +72,12 @@ namespace CReshetka.Controllers
         public IActionResult RadixSort()
         {
             return View();
+        } 
+        
+        [HttpGet]
+        public IActionResult MergeSort()
+        {
+            return View();
         }
 
 

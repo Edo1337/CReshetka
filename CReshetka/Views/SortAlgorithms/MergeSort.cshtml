@@ -1,0 +1,164 @@
+﻿@{
+    ViewData["Title"] = "Сортировка слиянием (Merge Sort)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <p>
+        Сортировка слиянием (Merge Sort) - это эффективный и стабильный алгоритм сортировки, который применяет стратегию "разделяй и властвуй". Он был разработан для улучшения производительности сортировки, особенно на больших объемах данных. Алгоритм основан на принципе разделения массива на две половины, сортировки каждой из половин, а затем слияния результатов в один упорядоченный массив.
+    </p>
+    <p>
+        <h3><span>Принцип работы сортировки слиянием</span></h3>
+    </p>
+    <p>
+        <span>Разделение:</span>
+    </p>
+    <p>
+        Массив рекурсивно разделяется пополам до тех пор, пока не останется по одному элементу в каждой части.
+    </p>
+    <br />
+    <p>
+        <span>Слияние:</span>
+    </p>
+    <p>
+        Отсортированные части массива сливаются в один массив. При слиянии элементы упорядочиваются.
+    </p>
+    <br />
+    <p>
+        <span>Постепенная сортировка:</span>
+    </p>
+    <p>
+        Процесс повторяется, пока весь массив не будет упорядочен.
+    </p>
+    <h3><span>Преимущества и недостатки</span></h3>
+    <p>
+        <span>Преимущества:</span>
+    </p>
+    <p>
+        1. Эффективен для сортировки больших массивов.
+    </p>
+    <p>
+        2. Гарантирует стабильность сортировки и устойчив к изменению порядка элементов.
+    </p>
+    <br />
+    <p>
+        <span>Недостатки:</span>
+    </p>
+    <p>
+        1. Занимает дополнительную память для создания временных массивов при слиянии.
+    </p>
+    <p>
+        2. На небольших массивах может быть менее эффективен, чем более простые алгоритмы сортировки.
+    </p>
+    <p>
+        <h3><span>Пример сортировки слиянием на C#:</span></h3>
+    </p>
+    @* упростить код не забудь!*@
+<pre>
+<code>
+    public class MergeSort
+{
+    public static void Main()
+    {
+        int[] arrayToSort = { 64, 34, 25, 12, 22, 11, 90 };
+
+        Console.WriteLine("Original array: " + string.Join(", ", arrayToSort));
+
+        // Вызываем метод сортировки
+        PerformMergeSort(arrayToSort, 0, arrayToSort.Length - 1);
+
+        Console.WriteLine("Sorted array: " + string.Join(", ", arrayToSort));
+    }
+
+    public static void PerformMergeSort(int[] arr, int left, int right)
+    {
+        if (left < right)
+        {
+            // Находим середину массива
+            int middle = (left + right) / 2;
+
+            // Рекурсивно сортируем обе половины
+            PerformMergeSort(arr, left, middle);
+            PerformMergeSort(arr, middle + 1, right);
+
+            // Объединяем отсортированные части
+            Merge(arr, left, middle, right);
+        }
+    }
+
+    public static void Merge(int[] arr, int left, int middle, int right)
+    {
+        int n1 = middle - left + 1;
+        int n2 = right - middle;
+
+        // Создаем временные массивы
+        int[] leftArray = new int[n1];
+        int[] rightArray = new int[n2];
+
+        // Копируем данные во временные массивы
+        for (int i = 0; i < n1; i++)
+        {
+            leftArray[i] = arr[left + i];
+        }
+        for (int j = 0; j < n2; j++)
+        {
+            rightArray[j] = arr[middle + 1 + j];
+        }
+
+        // Слияние временных массивов
+
+        int k = left; // Индекс основного массива
+
+        int i = 0; // Индекс левого временного массива
+        int j = 0; // Индекс правого временного массива
+
+        while (i < n1 && j < n2)
+        {
+            if (leftArray[i] <= rightArray[j])
+            {
+                arr[k] = leftArray[i];
+                i++;
+            }
+            else
+            {
+                arr[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Копируем оставшиеся элементы левого временного массива, если они есть
+        while (i < n1)
+        {
+            arr[k] = leftArray[i];
+            i++;
+            k++;
+        }
+
+        // Копируем оставшиеся элементы правого временного массива, если они есть
+        while (j < n2)
+        {
+            arr[k] = rightArray[j];
+            j++;
+            k++;
+        }
+    }
+}
+</code>
+</pre>
+
+    <p>
+        <h3><span>Визуализация сортировки:</span></h3>
+    </p>
+
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/ZRPoEKHXTJg?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Merge Sort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/T-SkvhcAXO4?list=PLIIXgDT0bKw4n6pwBjymd3wCPyQ3_SLMo" title="Сортировка слиянием (merge sort) - Алгоритмы C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
