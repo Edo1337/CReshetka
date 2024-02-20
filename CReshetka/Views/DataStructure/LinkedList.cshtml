@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "Связный список (Linked List)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div>
+    <p>
+        <span>Связный список (Linked List) представляет набор связанных узлов, каждый из которых хранит собственно данные и ссылку на следующий узел.</span> В реальной жизни связный список можно представить в виде поезда, каждый вагон которого может содержать некоторый груз или пассажиров и при этом может быть связан с другим вагоном.
+    </p>
+        <p>Со списком можно производить ряд операций:</p>
+        <ul><li>Добавить элемент (add).</li><li>Удалить элемент (remove).</li><li>Найти элемент (find).</li><li>Посчитать количество элементов по условию (count).</li></ul>
+    </div>
+    <p>
+        <h3><span>Визуализация связанного списка</span></h3>
+    </p>
+    <div style="text-align:center">
+        <img class="rounded-md" src="\img\datastructure\linkedlist1.png" />
+    </div>
+
+    <h3><span>Основные компоненты связанного списка</span></h3>
+    <p>
+        <span>Узел (Node): Узел - это основной элемент связанного списка.</span> Он содержит данные (значение) и указатель (или ссылку) на следующий узел в списке. В некоторых случаях, особенно в двусвязных списках, узел также может содержать указатель на предыдущий узел.
+    </p>
+    <pre><code>
+public class Node<T>
+{
+    public T Data;
+    public Node<T>? Next;
+
+    public Node(T data)
+    {
+        Data = data;
+        Next = null;
+    }
+}
+
+    </code></pre>
+
+    <p>
+        <span>Голова (Head): Голова списка - это первый узел.</span> Она содержит указатель на начало списка. Операции добавления и удаления элементов часто начинаются с головы.
+    </p>
+    <pre><code>
+        Node<T>? head; // головной/первый элемент
+    </code></pre>
+
+    <span>Хвост (Tail): Хвост списка - это последний узел.</span> Он содержит указатель на следующий узел, который обычно равен null или нулевому указателю, чтобы указать конец списка.
+    <pre><code>
+        Node<T>? tail; // последний/хвостовой элемент
+    </code></pre>
+
+    <h3><span>Пример односвязного списка на C#</span></h3>
+    <pre><code>
+using System.Collections;
+using System.Collections.Generic;
+
+public class LinkedList<T> : IEnumerable<T>  // односвязный список
+{
+    Node<T>? head; // головной/первый элемент
+    Node<T>? tail; // последний/хвостовой элемент
+    int count;  // количество элементов в списке
+
+    // добавление элемента
+    public void Add(T data)
+    {
+        Node<T> node = new Node<T>(data);
+
+        if (head == null)
+            head = node;
+        else
+            tail!.Next = node;
+        tail = node;
+
+        count++;
+    }
+    // удаление элемента
+    public bool Remove(T data)
+    {
+        Node<T>? current = head;
+        Node<T>? previous = null;
+
+        while (current != null && current.Data != null)
+        {
+            if (current.Data.Equals(data))
+            {
+                // Если узел в середине или в конце
+                if (previous != null)
+                {
+                    // убираем узел current, теперь previous ссылается не на current, а на current.Next
+                    previous.Next = current.Next;
+
+                    // Если current.Next не установлен, значит узел последний,
+                    // изменяем переменную tail
+                    if (current.Next == null)
+                        tail = previous;
+                }
+                else
+                {
+                    // если удаляется первый элемент
+                    // переустанавливаем значение head
+                    head = head?.Next;
+
+                    // если после удаления список пуст, сбрасываем tail
+                    if (head == null)
+                        tail = null;
+                }
+                count--;
+                return true;
+            }
+
+            previous = current;
+            current = current.Next;
+        }
+        return false;
+    }
+
+    public int Count { get { return count; } }
+    public bool IsEmpty { get { return count == 0; } }
+    // очистка списка
+    public void Clear()
+    {
+        head = null;
+        tail = null;
+        count = 0;
+    }
+    // содержит ли список элемент
+    public bool Contains(T data)
+    {
+        Node<T>? current = head;
+        while (current != null && current.Data !=null)
+        {
+            if (current.Data.Equals(data)) return true;
+            current = current.Next;
+        }
+        return false;
+    }
+    // добвление в начало
+    public void AppendFirst(T data)
+    {
+        Node<T> node = new Node<T>(data);
+        node.Next = head;
+        head = node;
+        if (count == 0)
+            tail = head;
+        count++;
+    }
+
+    IEnumerator<T> IEnumerable<T>.GetEnumerator()
+    {
+        Node<T>? current = head;
+        while (current != null)
+        {
+            yield return current.Data;
+            current = current.Next;
+        }
+    }
+
+    // реализация интерфейса IEnumerable
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return ((IEnumerable<T>)this).GetEnumerator();
+    }
+}        </code></pre>
+
+    <p>
+        <h3><span>Объяснение от <a href="https://www.youtube.com/CODEBLOG">CODE BLOG</a>:</span></h3>
+    </p>
+    <div style="align-content:center">
+        <iframe class="rounded-md" width="1280" height="720" src="https://www.youtube.com/embed/hZYQmNJBsKM?list=PLIIXgDT0bKw4DB9toGU73ntyYIZV7aJi5" title="Связный список (linked list) - Структуры данных C#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
