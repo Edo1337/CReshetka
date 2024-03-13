@@ -9,11 +9,20 @@ namespace CReshetka.Controllers
             return View();
         }
         
-        public IActionResult LinkedList()
+        public IActionResult Array()
         {
             return View();
         }
 
+        public IActionResult List()
+        {
+            return View();
+        }
+        
+        public IActionResult LinkedList()
+        {
+            return View();
+        }
 
     }
 }

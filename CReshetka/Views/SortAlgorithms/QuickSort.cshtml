@@ -14,21 +14,21 @@
         <span>Выбор опорного элемента:</span>
     </p>
     <p>
-        Из массива выбирается опорный элемент. Это может быть любой элемент массива, но часто выбирается средний элемент.
+        Выбрать опорный элемент (pivot) из массива (далее в коде он изначально выбран в середине массива).
     </p>
     <br />
     <p>
         <span>Разделение:</span>
     </p>
     <p>
-        Массив разделяется на две части так, чтобы элементы, меньшие опорного, находились слева, а элементы, большие опорного, находились справа. Опорный элемент занимает свое окончательное место в массиве.
+        Разделить массив на две части: одна часть содержит элементы, которые меньше опорного элемента, а вторая часть - элементы, которые больше опорного элемента.
     </p>
     <br />
     <p>
         <span>Рекурсивная сортировка:</span>
     </p>
     <p>
-        Рекурсивно применяем тот же алгоритм к обеим частям массива до тех пор, пока весь массив не будет упорядочен.
+        Рекурсивно применить алгоритм быстрой сортировки к каждой части, пока все части не будут отсортированы.
     </p>
     <h3><span>Преимущества и недостатки</span></h3>
     <p>
@@ -53,7 +53,6 @@
     <p>
         <h3><span>Пример быстрой сортировки на C#:</span></h3>
     </p>
-    @* упростить код не забудь!*@
 <pre>
 <code>
     public class QuickSort
@@ -118,7 +117,7 @@
     </p>
 
     <div style="align-content:center">
-        <iframe width="1280" height="720" src="https://www.youtube.com/embed/9IqV6ZSjuaI?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Quick Sort (LL pointers)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/8hEyhs3OV1w?list=PLZh3kxyHrVp_AcOanN_jpuQbcMVdXbqei" title="Quick Sort (LR pointers)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
     <p>
