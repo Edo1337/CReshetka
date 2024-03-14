@@ -2,6 +2,7 @@
 
 namespace CReshetka.Controllers
 {
+    //хеш-таблица
     public class DataStructureController : Controller
     {
         public IActionResult Index()
@@ -20,6 +21,21 @@ namespace CReshetka.Controllers
         }
         
         public IActionResult LinkedList()
+        {
+            return View();
+        }
+
+        public IActionResult Queue()
+        {
+            return View();
+        }
+
+        public IActionResult Stack()
+        {
+            return View();
+        }
+
+        public IActionResult Dictionary()
         {
             return View();
         }
