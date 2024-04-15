@@ -171,7 +171,7 @@ namespace CReshetka.Controllers
                     UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
                     NameTest = testName
                 };
-
+                
                 _context.TestResults.Add(testResult);
                 _context.SaveChanges();
             }
